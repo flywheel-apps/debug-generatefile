@@ -1,0 +1,35 @@
+#! /bin/bash
+# This script is meant to evoke the algorithm without requiring any input arguments
+#
+
+# Define directory names and containers
+FLYWHEEL_BASE=/flywheel/v0
+OUTPUT_DIR=$FLYWHEEL_BASE/output
+CONTAINER='[flywheel/debug-generatefile]'
+
+
+# Define file size (in MB)
+# NOTE: Currently hardcoded as 1 GB
+FILE_SIZE=1000
+#TODO! entering 1000 in the code below does not give exactly 1GB
+#   FILE_SIZE needs to be divided by 1.04 to get the more accurate
+#   value for the command. For now, hard coded below
+FILE_SIZE_CONVERTED=954
+
+dd if=/dev/zero of=$OUTPUT_DIR/output.txt  bs=1M  count=$FILE_SIZE_CONVERTED
+
+# Get a list of the files in the output directory
+outputs=`find $OUTPUT_DIR -type f -name "*"`
+
+# If outputs exist, then go on...
+if [[ -z $outputs ]]
+  then
+      echo "No results found in output directory... Exiting"
+      exit 1
+  else
+      chmod -R 777 $OUTPUT_DIR
+      echo -e "Wrote: `ls $OUTPUT_DIR`"
+fi
+
+exit 0
+
