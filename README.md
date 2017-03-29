@@ -1,2 +1,2 @@
 # debug-generatefile
-Generates output file of a specific size
+Generates a text file of 1GB
