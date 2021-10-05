@@ -1,7 +1,5 @@
 #!/bin/bash
-# Builds the container.
-# The container can be exported using the export.sh script
-CONTAINER=flywheel/debug-generatefile
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-docker build --no-cache --tag $CONTAINER $DIR
+BASE=$(cat manifest.json | jq '.custom."gear-builder".image' | tr -d '"')
+echo "BASE is" $BASE
+docker build -f Dockerfile -t "${BASE}" .

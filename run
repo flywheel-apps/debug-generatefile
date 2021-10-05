@@ -4,13 +4,28 @@
 
 # Define directory names and containers
 FLYWHEEL_BASE=/flywheel/v0
+CONFIG_FILE=$FLYWHEEL_BASE/config.json
 OUTPUT_DIR=$FLYWHEEL_BASE/output
 CONTAINER='[flywheel/debug-generatefile]'
 
+##############################################################################
+# Parse configuration
+
+function parse_config {
+
+  CONFIG_FILE=$FLYWHEEL_BASE/config.json
+  MANIFEST_FILE=$FLYWHEEL_BASE/manifest.json
+
+  if [[ -f $CONFIG_FILE ]]; then
+    echo "$(cat $CONFIG_FILE | jq -r '.config.'$1)"
+  else
+    CONFIG_FILE=$MANIFEST_FILE
+    echo "$(cat $MANIFEST_FILE | jq -r '.config.'$1'.default')"
+  fi
+}
 
 # Define file size (in MB)
-# NOTE: Currently hardcoded as 1 GB
-FILE_SIZE=1000
+FILE_SIZE="$(parse_config 'size')"
 dd if=/dev/zero of=$OUTPUT_DIR/output.txt  bs=1M  count=$FILE_SIZE
 
 # Get a list of the files in the output directory
@@ -23,8 +38,7 @@ if [[ -z $outputs ]]
       exit 1
   else
       chmod -R 777 $OUTPUT_DIR
-      echo -e "Wrote: `ls $OUTPUT_DIR`"
+      echo -e "Wrote: `ls -l $OUTPUT_DIR`"
 fi
 
 exit 0
-
