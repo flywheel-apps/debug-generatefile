@@ -2,7 +2,7 @@
 
 # start with ubuntu
 FROM ubuntu:trusty
-MAINTAINER Jennifer Reiter <jenniferreiter@invenshure.com>
+LABEL maintainer="support@flywheel.io"
 
 RUN apt-get update && apt-get -y install jq 
 
