@@ -1,0 +1,10 @@
+{
+    "config": {
+        "size": 2
+    },
+    "inputs": {},
+    "destination": {
+        "type": "session",
+        "id": "604a315271889871daddf3d5"
+    }
+}

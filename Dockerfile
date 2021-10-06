@@ -4,6 +4,8 @@
 FROM ubuntu:trusty
 MAINTAINER Jennifer Reiter <jenniferreiter@invenshure.com>
 
+RUN apt-get update && apt-get -y install jq 
+
 # Make directory for flywheel spec (v0)
 ENV FLYWHEEL /flywheel/v0
 RUN mkdir -p ${FLYWHEEL}

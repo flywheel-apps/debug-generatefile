@@ -1,15 +1,9 @@
 #! /bin/bash
-# This script is meant to evoke the algorithm without requiring any input arguments
-#
 
-# Define directory names and containers
 FLYWHEEL_BASE=/flywheel/v0
 CONFIG_FILE=$FLYWHEEL_BASE/config.json
 OUTPUT_DIR=$FLYWHEEL_BASE/output
-CONTAINER='[flywheel/debug-generatefile]'
 
-##############################################################################
-# Parse configuration
 
 function parse_config {
 
@@ -24,21 +18,22 @@ function parse_config {
   fi
 }
 
+
 # Define file size (in MB)
 FILE_SIZE="$(parse_config 'size')"
+echo FILE_SIZE is $FILE_SIZE
+
 dd if=/dev/zero of=$OUTPUT_DIR/output.txt  bs=1M  count=$FILE_SIZE
 
-# Get a list of the files in the output directory
 outputs=`find $OUTPUT_DIR -type f -name "*"`
 
-# If outputs exist, then go on...
 if [[ -z $outputs ]]
   then
       echo "No results found in output directory... Exiting"
       exit 1
   else
       chmod -R 777 $OUTPUT_DIR
-      echo -e "Wrote: `ls -l $OUTPUT_DIR`"
+      echo -e "Wrote: `ls -lh $OUTPUT_DIR`"
 fi
 
 exit 0

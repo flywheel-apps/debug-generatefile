@@ -1,26 +1,31 @@
 {
-    "author": "Jennifer Reiter <jenniferreiter@invenshure.com>", 
+    "author": "Flywheel <support@flywheel.io>",
+    "command": "run",
     "config": {
         "size": {
-          "description": "Size of file in MB (default 1000)",
-          "type": "integer",
-          "default": 1000
+            "description": "Size of file in MB (default 1000)",
+            "type": "integer",
+            "default": 1000
         }
-    }, 
+    },
     "custom": {
         "gear-builder": {
-          "category": "converter",
-          "image": "flywheel/debug-generatefile:v0.0.2"
-          },
-        "docker-image": "flywheel/debug-generatefile:v0.0.2"
-    }, 
-    "version": "0.0.2",
-    "description": "This Gear produces a .txt file with the given size in MB.", 
-    "inputs": {}, 
-    "label": "Debug File Generator: Creating a large file", 
-    "license": "MIT", 
+            "category": "converter",
+            "image": "flywheel/debug-generatefile:v0.0.3"
+        },
+        "docker-image": "flywheel/debug-generatefile:v0.0.3"
+    },
+    "version": "0.0.3",
+    "description": "This Gear produces a .txt file with the given size in MB.",
+    "environment": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt"
+    },
+    "inputs": {},
+    "label": "Debug File Generator: Creating a large file",
+    "license": "MIT",
     "maintainer": "Flywheel <support@flywheel.io>",
-    "name": "debug-generatefile", 
-    "source": "https://github.com/flywheel-apps/debug-generatefile", 
+    "name": "debug-generatefile",
+    "source": "https://github.com/flywheel-apps/debug-generatefile",
     "url": "https://github.com/flywheel-apps/debug-generatefile"
 }
