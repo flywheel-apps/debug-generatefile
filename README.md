@@ -4,7 +4,7 @@
 # debug-generatefile
 
 ## Overview
-Generates a text file with the given size.
+Generates a random binary file with the given size.
 
 ## Running
 
