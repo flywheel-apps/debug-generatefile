@@ -23,7 +23,7 @@ function parse_config {
 FILE_SIZE="$(parse_config 'size')"
 echo FILE_SIZE is $FILE_SIZE
 
-dd if=/dev/zero of=$OUTPUT_DIR/output.txt  bs=1M  count=$FILE_SIZE
+dd if=/dev/random of=$OUTPUT_DIR/output.txt  bs=1M  count=$FILE_SIZE
 
 outputs=`find $OUTPUT_DIR -type f -name "*"`
 

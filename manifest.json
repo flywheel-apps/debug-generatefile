@@ -11,11 +11,11 @@
     "custom": {
         "gear-builder": {
             "category": "converter",
-            "image": "flywheel/debug-generatefile:v0.0.4"
+            "image": "flywheel/debug-generatefile:v0.0.5"
         },
-        "docker-image": "flywheel/debug-generatefile:v0.0.4"
+        "docker-image": "flywheel/debug-generatefile:v0.0.5"
     },
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "This Gear produces a .txt file with the given size in MB.",
     "environment": {
         "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
