@@ -61,4 +61,7 @@ One major difference between this simulated gear and a real gear is the environm
 The real gear executed on a Flywheel platform is run using `runc` and *not* `docker run` 
 so it does not have the environment variables set as they are in the simulated gear.
 To fix this, type `env` inside the container and add any necessary environment variables
-to the manifest "environment" attribute.  Be sure to set the `PATH` correctly.
+to the manifest "environment" attribute.  Also, be sure to set the `PATH` correctly so
+the desired executable can be found inside the container.
+
+To upload your gear, log in to your flywheel site using the CLI, and then run `./upload.sh`
